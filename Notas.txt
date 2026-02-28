@@ -1,0 +1,24 @@
+// Construir imagen
+podman build -t web-api-consulta .
+
+// Crear pod
+podman pod create --name web-api-consulta-pod -p 8080:8080
+
+//Iniciar pod
+podman run -d -e ASPNETCORE_ENVIRONMENT="Development" --pod web-api-consulta-pod --name web-api-consulta-contenedor web-api-consulta
+
+-----------------------------------------VARIABLE AMBIENTE---------------------
+ASPNETCORE_ENVIRONMENT="Development"
+
+-----------------------------------------CONMANDOS ----------------------------
+//Consultar pods
+podman pod ps
+
+//Consultar imagenes
+podman images
+
+//Consultar contenedores
+podman ps
+
+//Consultar logs 
+podman logs nombre-contenedor
